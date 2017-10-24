@@ -32,8 +32,8 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@Value("nrOfDays")
-	private Integer nrOfDays;
+	@Value("app.nrOfDays")
+	private String nrOfDays;
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public User registerUser(@RequestBody User user) {
@@ -65,7 +65,7 @@ public class UserController {
 		}
 
 		Calendar gregorianCalendar=new GregorianCalendar();
-		logger.info("gregorianCalendar: before : {} ",gregorianCalendar.getTime());
+		logger.info("gregorianCalendar: before : {}, nrOfDays:{}",gregorianCalendar.getTime(), nrOfDays);
 		gregorianCalendar.add(Calendar.DATE, 15);
 		Date exp=gregorianCalendar.getTime();
 		logger.info("gregorianCalendar: after :{} ",gregorianCalendar.getTime());
