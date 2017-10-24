@@ -32,7 +32,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@Value("app.nrOfDays")
+	@Value("${app.nrOfDays}")
 	private String nrOfDays;
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
