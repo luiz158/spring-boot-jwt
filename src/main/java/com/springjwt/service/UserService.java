@@ -1,6 +1,6 @@
-package me.aboullaite.service;
+package com.springjwt.service;
 
-import me.aboullaite.model.User;
+import com.springjwt.model.User;
 
 public interface UserService {
 	User save(User user);

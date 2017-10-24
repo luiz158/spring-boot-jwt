@@ -1,10 +1,11 @@
-package me.aboullaite;
+package com.springjwt;
 
-import me.aboullaite.config.JwtFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+
+import com.springjwt.config.JwtFilter;
 
 @SpringBootApplication
 public class SpringBootJwtApplication {

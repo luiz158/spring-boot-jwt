@@ -1,4 +1,4 @@
-package me.aboullaite.controller;
+package com.springjwt.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import me.aboullaite.model.User;
-import me.aboullaite.service.UserService;
+import com.springjwt.model.User;
+import com.springjwt.service.UserService;
 
 @RestController
 @RequestMapping("/secure")

@@ -1,9 +1,9 @@
-package me.aboullaite.dao;
+package com.springjwt.dao;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import me.aboullaite.model.User;
+import com.springjwt.model.User;
 
 @Repository
 public interface UserDao extends CrudRepository<User, Long> {

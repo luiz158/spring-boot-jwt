@@ -1,4 +1,4 @@
-package me.aboullaite.config;
+package com.springjwt.config;
 
 import java.io.IOException;
 

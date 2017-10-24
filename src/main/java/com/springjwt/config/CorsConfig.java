@@ -1,4 +1,4 @@
-package me.aboullaite.config;
+package com.springjwt.config;
 
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -28,6 +28,7 @@ public class CorsConfig {
 		config.addAllowedMethod("POST");
 		config.addAllowedMethod("DELETE");
 		config.addAllowedMethod("PATCH");
+		
 		source.registerCorsConfiguration("/**", config);
 		// return new CorsFilter(source);
 		final FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));

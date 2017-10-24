@@ -1,11 +1,11 @@
-package me.aboullaite.service.impl;
+package com.springjwt.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import me.aboullaite.dao.UserDao;
-import me.aboullaite.model.User;
-import me.aboullaite.service.UserService;
+import com.springjwt.dao.UserDao;
+import com.springjwt.model.User;
+import com.springjwt.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {

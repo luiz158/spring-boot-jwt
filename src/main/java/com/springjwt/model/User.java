@@ -1,4 +1,4 @@
-package me.aboullaite.model;
+package com.springjwt.model;
 
 import java.util.Date;
 import javax.persistence.Entity;
