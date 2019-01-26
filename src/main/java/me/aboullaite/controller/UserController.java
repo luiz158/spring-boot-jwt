@@ -24,6 +24,10 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	@RequestMapping(value = "/hello", method = RequestMethod.GET)
+	public String hello() {
+		return "Hello";
+	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public User registerUser(@RequestBody User user) {
