@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.servlet.ServletException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,8 +59,14 @@ public class UserController {
 			throw new ServletException("Invalid login. Please check your name and password.");
 		}
 
-		jwtToken = Jwts.builder().setSubject(email).claim("roles", "user").setIssuedAt(new Date())
-				.signWith(SignatureAlgorithm.HS256, "secretkey").compact();
+//		jwtToken = Jwts.builder().setSubject(email).claim("roles", "user").setIssuedAt(new Date())
+//				.signWith(SignatureAlgorithm.HS256, "secretkey").compact();
+
+		jwtToken = "Authorization: Basic " +
+				Base64Utils.encodeToString(
+						String.format("%s:%s", email,password)
+								.getBytes()
+				);
 
 		return jwtToken;
 	}
