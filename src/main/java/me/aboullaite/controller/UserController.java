@@ -2,10 +2,13 @@ package me.aboullaite.controller;
 
 import me.aboullaite.model.User;
 import me.aboullaite.service.UserService;
+import me.aboullaite.util.PasswordUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.Date;
 
@@ -17,6 +20,7 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping(value = "/user/register", method = RequestMethod.POST)
+	@ResponseBody
 	public String register(@RequestBody User user) {
 		User result = userService.findByEmail(user.getEmail());
 		if(result!=null){
@@ -27,12 +31,14 @@ public class UserController {
 							String.format("%s:%s", user.getEmail(), user.getPassword())
 									.getBytes()
 					);
+			user.setPassword(PasswordUtil.hashPassword(user.getPassword()));
 			userService.save(user);
 			return token;
 		}
 	}
 
 	@RequestMapping(value="/", method = RequestMethod.GET)
+	@ResponseBody
 	public String get(@RequestHeader("Authorization") String auth) {
 		System.out.println(auth);
 		if ((auth != null) && (auth.length() > 6)) {
@@ -41,11 +47,11 @@ public class UserController {
             User user = userService.findByEmail(info[0]);
             if(user == null){
                 return "not found user";
-            }else if(!user.getPassword().equals(info[1])){
+			}else if(!PasswordUtil.verifyPassword(info[1],user.getPassword())){
                 return String.format("password not correct: %s, %s", info[1], user.getPassword());
             }else{
-                Date d = new Date();
-                return String.valueOf(d.getTime());
+                LocalDateTime d = LocalDateTime.now();
+                return d.toString();
             }
 
         }
