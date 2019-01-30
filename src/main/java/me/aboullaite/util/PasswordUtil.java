@@ -2,6 +2,9 @@ package me.aboullaite.util;
 
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class PasswordUtil {
 
     private static int logRounds = 11;
@@ -50,6 +53,14 @@ public class PasswordUtil {
         }
         if (special<1 || lowCount<1 || upCount<1 || digit<1) return false;
         return true;
+    }
+
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^([_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{1,6}))?$");
+
+    public static boolean validate(String emailStr) {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(emailStr);
+        return matcher.find();
     }
 
 

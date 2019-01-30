@@ -23,11 +23,19 @@ public class UserController {
 	@ResponseBody
 	public StringResponse register(@RequestBody User user, HttpServletResponse response) {
 		User result = userService.findByEmail(user.getEmail());
-		if(!PasswordUtil.checkStrength(user.getPassword())) return new StringResponse("password is too weak");
+
 		if(result!=null){
 			response.setStatus(HttpStatus.CONFLICT.value());
 			return new StringResponse("Account already exists");
 		}else{
+		    if(!PasswordUtil.validate(user.getEmail())){
+                response.setStatus(HttpStatus.BAD_REQUEST.value());
+                return new StringResponse("email is not valid");
+            }
+            if(!PasswordUtil.checkStrength(user.getPassword())) {
+                response.setStatus(HttpStatus.BAD_REQUEST.value());
+                return new StringResponse("password is too weak");
+            }
 			String token = "Authorization Token: " +
 					Base64Utils.encodeToString(
 							String.format("%s:%s", user.getEmail(), user.getPassword())
