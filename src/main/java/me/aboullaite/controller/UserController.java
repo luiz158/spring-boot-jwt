@@ -23,6 +23,7 @@ public class UserController {
 	@ResponseBody
 	public StringResponse register(@RequestBody User user, HttpServletResponse response) {
 		User result = userService.findByEmail(user.getEmail());
+		if(!PasswordUtil.checkStrength(user.getPassword())) return new StringResponse("password is too weak");
 		if(result!=null){
 			response.setStatus(HttpStatus.CONFLICT.value());
 			return new StringResponse("Account already exists");
