@@ -8,6 +8,6 @@ import me.aboullaite.model.User;
 @Repository
 public interface UserDao extends CrudRepository<User, Long> {
 	User save(User user);
-
+    // generate query automatically
 	User findByEmail(String email);
 }
