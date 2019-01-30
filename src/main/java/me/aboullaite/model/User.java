@@ -1,18 +1,17 @@
 package me.aboullaite.model;
 
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.Table;
 
 @Entity
+@Table(name="user")
 public class User {
     @Id
+	@Column(name="email")
 	private String email;
+	@Column(name="password")
 	private String password;
 
 	public String getEmail() {
