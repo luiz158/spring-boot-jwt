@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>me.aboullaite</groupId>
-	<artifactId>spring_boot_jwt</artifactId>
+	<groupId>csye6225_assignment</groupId>
+	<artifactId>csye6225_assignment</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>spring_boot_jwt</name>
-	<description>Demo project for Spring Boot and JWT</description>
+	<name>csye6225_assignment</name>
+	<description>Assignments</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
